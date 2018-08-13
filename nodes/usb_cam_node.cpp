@@ -192,8 +192,10 @@ public:
     }
     else
     {
-      cam_.set_v4l_parameter("white_balance_temperature_auto", 0);
-      cam_.set_v4l_parameter("white_balance_temperature", white_balance_);
+    // NOT COMPATIBLE WITH SEE3CAM CU20, see v4l2-ctl --all for available params
+    // EDITED OUT - SHAUN BOWMAN, MOWBOT
+    //  cam_.set_v4l_parameter("white_balance_temperature_auto", 0);
+    //  cam_.set_v4l_parameter("white_balance_temperature", white_balance_);
     }
 
     // check auto exposure
@@ -206,19 +208,21 @@ public:
     }
 
     // check auto focus
-    if (autofocus_)
-    {
-      cam_.set_auto_focus(1);
-      cam_.set_v4l_parameter("focus_auto", 1);
-    }
-    else
-    {
-      cam_.set_v4l_parameter("focus_auto", 0);
-      if (focus_ >= 0)
-      {
-        cam_.set_v4l_parameter("focus_absolute", focus_);
-      }
-    }
+    // NOT COMPATIBLE WITH SEE3CAM CU20, see v4l2-ctl --all for available params
+    // EDITED OUT - SHAUN BOWMAN, MOWBOT
+    //if (autofocus_)
+    //{
+    //  cam_.set_auto_focus(1);
+    //  cam_.set_v4l_parameter("focus_auto", 1);
+    //}
+    //else
+    //{
+    //  cam_.set_v4l_parameter("focus_auto", 0);
+    //  if (focus_ >= 0)
+    //  {
+    //    cam_.set_v4l_parameter("focus_absolute", focus_);
+    //  }
+    //}
   }
 
   virtual ~UsbCamNode()
